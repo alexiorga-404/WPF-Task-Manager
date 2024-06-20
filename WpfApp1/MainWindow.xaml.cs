@@ -38,7 +38,12 @@ namespace WpfApp1
         {
             if (!string.IsNullOrEmpty(tbTask.Text) && tbTask.Text != "Enter a task:")
             {
-                
+                if(activeTasks.Any(s => s.Text == tbTask.Text))
+                {   
+
+                    MessageBox.Show("Task is already in the list");
+                    return;
+                }
                 string data = tbTask.Text;
                 Task task = new Task(data);
                 activeTasks.Add(task);
