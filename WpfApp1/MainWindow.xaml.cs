@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -39,10 +40,14 @@ namespace WpfApp1
             if (!string.IsNullOrEmpty(tbTask.Text) && tbTask.Text != "Enter a task:")
             {
                 if(activeTasks.Any(s => s.Text == tbTask.Text))
-                {   
+                {
+                    string message = "Task is already in the list\n" +
+                        "Would you still like to add the task?";
+                    MessageBoxResult result= MessageBox.Show(message,"",MessageBoxButton.YesNo,MessageBoxImage.Warning);
+                    if(result==MessageBoxResult.No)
+                        return;
 
-                    MessageBox.Show("Task is already in the list");
-                    return;
+
                 }
                 string data = tbTask.Text;
                 Task task = new Task(data);

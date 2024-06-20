@@ -5,27 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Task Master" Height="450" Width="800" >
+        Title="Task Master" Height="450" Width="800"
+        Icon="assets\favicon.ico"
+        Background="#e6fcfc">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="13*"/>
-            <ColumnDefinition Width="147*"/>
+            <ColumnDefinition Width="65*"/>
+            <ColumnDefinition Width="87*"/>
+            <ColumnDefinition Width="648*"/>
         </Grid.ColumnDefinitions>
         <!--CheckBox Name="cbTasks" Grid.Column="1" HorizontalAlignment="Left" Height="151" Margin="96,105,0,0" VerticalAlignment="Top" Width="239" BorderBrush="#FF0C0C0C" Background="{x:Null}"/-->
-        <TextBox Name="tbTask" Grid.Column="1" HorizontalAlignment="Left" Height="21" Margin="521,105,0,0" TextWrapping="Wrap"  
-                 VerticalAlignment="Top" Width="114"  GotFocus="tbTask_GotFocus" LostFocus="tbTask_LostFocus" />
-        <Button Grid.Column="1" Content="Enter" HorizontalAlignment="Left" Height="21" Margin="645,105,0,0" VerticalAlignment="Top" Width="66" Click="Button_Click"/>
-        <ListBox Name="CheckBoxListBox" Grid.Column="1" HorizontalAlignment="Center" Height="199" VerticalAlignment="Top" Width="220"
-             ItemsSource="{Binding activeTasks}" RenderTransformOrigin="0.5,0.5" Margin="0,105,0,0">
+        <TextBox Name="tbTask" Grid.Column="2" HorizontalAlignment="Left" Height="21" Margin="425,105,0,0" TextWrapping="Wrap"  
+                 VerticalAlignment="Top" Width="123"  GotFocus="tbTask_GotFocus" LostFocus="tbTask_LostFocus" 
+                 Background="#f6e6fc"/>
+        <Button Grid.Column="2" Content="Enter" HorizontalAlignment="Left" Height="21" Margin="558,105,0,0" VerticalAlignment="Top" Width="66" Click="Button_Click"/>
+        <ListBox Name="CheckBoxListBox" Grid.Column="2" HorizontalAlignment="Left" Height="199" 
+                 VerticalAlignment="Top" Width="220" Background="#e6fcf3"
+             ItemsSource="{Binding activeTasks}" RenderTransformOrigin="0.5,0.5" Margin="170,105,0,0">
             <ListBox.Resources>
                 <Style TargetType="ListBox">
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="ListBox">
                                 <Border BorderBrush="Black" BorderThickness="0.5,0.5,0.5,0.5" Background="{TemplateBinding Background}">
-        
+
                                     <StackPanel>
-                                        
+
                                         <TextBlock Text="Active Tasks" FontWeight="Light"  Margin="5"/>
                                         <ItemsPresenter/>
                                     </StackPanel>
@@ -34,7 +39,7 @@
                         </Setter.Value>
                     </Setter>
                 </Style>
-                
+
             </ListBox.Resources>
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -45,9 +50,10 @@
 
 
 
-        <ListView Name="lvCompleted" Grid.Column="1" HorizontalAlignment="Left" Height="199" Margin="32,105,0,0" VerticalAlignment="Top" Width="200"
-                  FontWeight="Light"
-          ItemsSource="{Binding completedTasks}">
+        <ListView Name="lvCompleted" Grid.Column="1" HorizontalAlignment="Left" Height="199" Margin="32,105,0,0" 
+                  VerticalAlignment="Top" Width="200"
+                  FontWeight="Light" Background="#e6fcf3"
+          ItemsSource="{Binding completedTasks}" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Completed Tasks" DisplayMemberBinding="{Binding Text}"/>
@@ -55,7 +61,7 @@
             </ListView.View>
         </ListView>
 
-        <Button Grid.Column="1" Name="btnRemove" Content="Remove" HorizontalAlignment="Left" Height="21" Margin="512,283,0,0" VerticalAlignment="Top" Width="66" Click="btnRemove_Click"/>
-        <Button Grid.Column="1" x:Name="btnFinish" Content="Finish" HorizontalAlignment="Left" Height="21" Margin="512,247,0,0" VerticalAlignment="Top" Width="66" Click="btnFinish_Click"/>
+        <Button Grid.Column="2" Name="btnRemove" Content="Remove" HorizontalAlignment="Left" Height="21" Margin="425,283,0,0" VerticalAlignment="Top" Width="66" Click="btnRemove_Click"/>
+        <Button Grid.Column="2" x:Name="btnFinish" Content="Finish" HorizontalAlignment="Left" Height="21" Margin="425,247,0,0" VerticalAlignment="Top" Width="66" Click="btnFinish_Click"/>
     </Grid>
 </Window>
