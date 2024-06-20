@@ -107,5 +107,29 @@ namespace WpfApp1
                 }
             }
         }
+
+        private void tbTask_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+               
+                Button_Click(sender, e);
+                tbTask.Clear();
+            }
+        }
+
+        private void CheckBoxListBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Enter:
+                    btnFinish_Click(sender, e);
+                    return;
+                case Key.Delete:
+                    btnRemove_Click(sender, e);
+                    return;
+                default : break;
+            }
+        }
     }
 }

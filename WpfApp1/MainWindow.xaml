@@ -17,11 +17,12 @@
         <!--CheckBox Name="cbTasks" Grid.Column="1" HorizontalAlignment="Left" Height="151" Margin="96,105,0,0" VerticalAlignment="Top" Width="239" BorderBrush="#FF0C0C0C" Background="{x:Null}"/-->
         <TextBox Name="tbTask" Grid.Column="2" HorizontalAlignment="Left" Height="21" Margin="425,105,0,0" TextWrapping="Wrap"  
                  VerticalAlignment="Top" Width="123"  GotFocus="tbTask_GotFocus" LostFocus="tbTask_LostFocus" 
-                 Background="#f6e6fc"/>
+                 Background="#f6e6fc" KeyDown="tbTask_KeyDown"/>
         <Button Grid.Column="2" Content="Enter" HorizontalAlignment="Left" Height="21" Margin="558,105,0,0" VerticalAlignment="Top" Width="66" Click="Button_Click"/>
         <ListBox Name="CheckBoxListBox" Grid.Column="2" HorizontalAlignment="Left" Height="199" 
                  VerticalAlignment="Top" Width="220" Background="#e6fcf3"
-             ItemsSource="{Binding activeTasks}" RenderTransformOrigin="0.5,0.5" Margin="170,105,0,0">
+                 ItemsSource="{Binding activeTasks}" RenderTransformOrigin="0.5,0.5" Margin="170,105,0,0"
+                 KeyDown="CheckBoxListBox_KeyDown">
             <ListBox.Resources>
                 <Style TargetType="ListBox">
                     <Setter Property="Template">
