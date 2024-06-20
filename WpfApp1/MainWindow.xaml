@@ -1,0 +1,61 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Task Master" Height="450" Width="800" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="147*"/>
+        </Grid.ColumnDefinitions>
+        <!--CheckBox Name="cbTasks" Grid.Column="1" HorizontalAlignment="Left" Height="151" Margin="96,105,0,0" VerticalAlignment="Top" Width="239" BorderBrush="#FF0C0C0C" Background="{x:Null}"/-->
+        <TextBox Name="tbTask" Grid.Column="1" HorizontalAlignment="Left" Height="21" Margin="521,105,0,0" TextWrapping="Wrap"  
+                 VerticalAlignment="Top" Width="114"  GotFocus="tbTask_GotFocus" LostFocus="tbTask_LostFocus" />
+        <Button Grid.Column="1" Content="Enter" HorizontalAlignment="Left" Height="21" Margin="645,105,0,0" VerticalAlignment="Top" Width="66" Click="Button_Click"/>
+        <ListBox Name="CheckBoxListBox" Grid.Column="1" HorizontalAlignment="Center" Height="199" VerticalAlignment="Top" Width="220"
+             ItemsSource="{Binding activeTasks}" RenderTransformOrigin="0.5,0.5" Margin="0,105,0,0">
+            <ListBox.Resources>
+                <Style TargetType="ListBox">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBox">
+                                <Border BorderBrush="Black" BorderThickness="0.5,0.5,0.5,0.5" Background="{TemplateBinding Background}">
+        
+                                    <StackPanel>
+                                        
+                                        <TextBlock Text="Active Tasks" FontWeight="Light"  Margin="5"/>
+                                        <ItemsPresenter/>
+                                    </StackPanel>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+                
+            </ListBox.Resources>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox IsChecked="{Binding Completed, Mode=TwoWay}" Content="{Binding Text}" Margin="5"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+
+
+        <ListView Name="lvCompleted" Grid.Column="1" HorizontalAlignment="Left" Height="199" Margin="32,105,0,0" VerticalAlignment="Top" Width="200"
+                  FontWeight="Light"
+          ItemsSource="{Binding completedTasks}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Completed Tasks" DisplayMemberBinding="{Binding Text}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button Grid.Column="1" Name="btnRemove" Content="Remove" HorizontalAlignment="Left" Height="21" Margin="512,283,0,0" VerticalAlignment="Top" Width="66" Click="btnRemove_Click"/>
+        <Button Grid.Column="1" x:Name="btnFinish" Content="Finish" HorizontalAlignment="Left" Height="21" Margin="512,247,0,0" VerticalAlignment="Top" Width="66" Click="btnFinish_Click"/>
+    </Grid>
+</Window>
